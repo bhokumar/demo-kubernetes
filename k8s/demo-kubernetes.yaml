@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
         - name: demo-kubernetes
-          image: bhoopendra/demo-kubernetes:configMapTest6
+          image: bhoopendra/demo-kubernetes:configMapTest7
           ports:
             - containerPort: 8080
           env:
