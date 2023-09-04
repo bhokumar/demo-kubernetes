@@ -33,11 +33,13 @@ spec:
       containers:
         - name: demo-kubernetes
           image: bhoopendra/demo-kubernetes:configMapTest6
-          volumeMounts:
-            - name: config-volume
-              mountPath: /app/config
           ports:
             - containerPort: 8080
+          env:
+            - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+              value: "true"
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI
+              value: "true"
           livenessProbe:
             httpGet:
               path: /demokubernetes/actuator/health
@@ -45,7 +47,3 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 60
             timeoutSeconds: 1
-      volumes:
-        - name: config-volume
-          configMap:
-            name: roboapp-app-config
